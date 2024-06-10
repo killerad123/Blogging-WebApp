@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="border: 2px solid red">
+      <p><%= blog.title %></p>
+      <p><%= blog.desc %></p>
+      <p><%= blog.likes.length %></p>
+      <a href="/blog/like/<%= blog._id %>">
+        <%= (isUserLiked==="Yes")? "Unlike" : "Like" %>
+      </a>
+    </div>
+    <div>
+      <h2>Comment here</h2>
+      <form action="/blog/comment/<%= blog._id %>" method="post">
+        <textarea
+          name="content"
+          placeholder="Write your views..."
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
+        <input type="submit" value="Comment it" />
+      </form>
+    </div>
+
+    <div>
+      <h3>Other Comments</h3>
+      <div>
+        <% if(comments.length===0) { %>
+        <p>No comments</p>
+        <% } else { %> <% comments.forEach((comment)=>{ %>
+        <div style="border: 2px solid red">
+          <p><%= comment.text %></p>
+          <p>
+            <span style="font-weight: bolder">Commented By - </span> <%=
+            comment.commentBy.username%>
+          </p>
+        </div>
+        <% })%> <% } %>
+      </div>
+    </div>
+  </body>
+</html>

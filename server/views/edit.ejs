@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/blog/edit/<%= blogDetails._id%>" method="post">
+       title : <input type="text" style="display: block;" name="title" id="" value="<%= blogDetails.title%>">
+       desc : <input type="text" style="display: block;" name="desc" id="" value="<%= blogDetails.desc%>">
+        <input type="submit" value="submit" id="">
+    </form>
+</body>
+</html>

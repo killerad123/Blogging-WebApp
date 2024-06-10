@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Profile page
+    <a href="/">Home</a>
+    <div>
+      <form action="/blog/create" method="post">
+        <input
+          style="display: block"
+          type="text"
+          name="title"
+          placeholder="Blog Title"
+          id=""
+        />
+        <textarea
+          name="desc"
+          id=""
+          style="resize: none; display: block"
+          cols="100"
+          rows="8"
+        ></textarea>
+        <input type="submit" name="Create" id="" />
+      </form>
+    </div>
+
+    <div>
+      <h3>Hi, <%= user.username  %></h3>
+      <a href="/user/logout">Logout</a>
+      <h2>Your Posts</h2>
+      <% if (user.blogs.length==0) { %>
+      <h3>No blogs</h3>
+      <% } else { %> <% user.blogs.reverse().forEach(blog => { %>
+      <div style="width: 500px; min-height: 100px; border: 2px solid red">
+         <p><%= blog.title %></p>
+         <p><%= blog.desc %></p>
+         <span><%= blog.likes.length%> Likes</span>
+         <a href="/blog/edit/<%= blog._id%>">Edit</a>
+         <a href="/blog/delete/<%= blog._id%>">Delete</a>
+      </div>
+      <% }) %>
+       <% } %>
+    </div>
+  </body>
+</html>
